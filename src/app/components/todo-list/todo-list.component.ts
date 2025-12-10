@@ -37,11 +37,13 @@ export class TodoListComponent implements OnInit {
   onEdit(obj: Itodo) {
     this._todoService.editTodo$.next(obj);
     this.editId = obj.id;
+    this.filterValue='';
   }
 
   onRemove(obj: Itodo) {
     let sure = confirm(`Are you sure to delete Todo with id ${obj.id}`);
     if(sure){
+      this.filterValue=''
       this._todoService.deleteTodo(obj).subscribe({
         next: data => { this._snackbarService.showAlert(`Todo with id ${obj.id} deleted successfully!`) },
         error: err => {}
