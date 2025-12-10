@@ -8,7 +8,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class TodoServiceService {
 
-  todosArray: Array<Itodo> = JSON.parse(localStorage.getItem('todoArray') as string) || [];
+  todosArray: Array<Itodo> = JSON.parse(localStorage.getItem('todoArray') as string) || [
+    { id: '123', todo: "Pay pending bills", priority: "high" },
+    { id: '124', todo: "Organize desk", priority: "medium" },
+    { id: '125', todo: "Collect routine ideas", priority: "low" },
+    { id: '126', todo: "Finish weekly plan", priority: "high" },
+    { id: '127', todo: "Review monthly goals", priority: "medium" },
+    { id: '128', todo: "Clear phone files", priority: "low" }
+  ];
 
   editTodo$: Subject<Itodo> = new Subject();
 
