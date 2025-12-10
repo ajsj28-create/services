@@ -1,0 +1,26 @@
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-12">
+      <app-products-table>
+        <tr *ngFor="let prod of productsArray">
+          <td><img [src]="prod.brandLogoUrl" alt="logo"></td>
+          <td>{{ prod.brand }}</td>
+          <td>{{ prod.name }}</td>
+          <td>{{ prod.price | currency: 'INR'}}</td>
+          <td [ngClass]="(prod.inStock) ? 'bg-success' : 'bg-danger'"></td>
+        </tr>
+      </app-products-table>
+    </div>
+  </div>
+</div> -->
+
+<div class="container py-3 py-md-5">
+  <div class="row justify-content-center">
+    <div class="col-md-5 mb-3 mb-md-0">
+      <app-todo-form></app-todo-form>
+    </div>
+    <div class="col-md-7">
+      <app-todo-list></app-todo-list>
+    </div>
+  </div>
+</div>

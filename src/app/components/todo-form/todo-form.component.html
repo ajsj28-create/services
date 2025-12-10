@@ -1,0 +1,46 @@
+<div class="card">
+    <div class="card-body">
+        <h2>{{ isEditMode ? 'Update Todo' : 'Add Todo' }}</h2>
+        <form #todoForm="ngForm" (ngSubmit)="onAddTodo()">
+            <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Todo Item</mat-label>
+                <input
+                required
+                matInput
+                ngModel
+                name="todo">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Select Priority</mat-label>
+                <mat-select
+                required
+                ngModel
+                name="priority"
+                >
+                  <mat-option value="low">Low</mat-option>
+                  <mat-option value="medium">Medium</mat-option>
+                  <mat-option value="high">High</mat-option>
+                </mat-select>
+            </mat-form-field>            
+            <div class="text-right">
+                <button 
+                *ngIf="!isEditMode"
+                mat-mini-fab color="primary">
+                    <mat-icon>add</mat-icon>
+                </button>
+                <button
+                (click)="onUpdateTodo()" 
+                *ngIf="isEditMode"
+                mat-mini-fab color="primary" type="button">
+                    <mat-icon>update</mat-icon>
+                </button>
+                <button
+                (click)="onCancel()"
+                *ngIf="isEditMode"
+                mat-mini-fab type="button" class="bg-secondary ml-2">
+                    <mat-icon>clear</mat-icon>
+                </button>  
+            </div>   
+        </form>
+    </div>
+</div>

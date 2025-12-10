@@ -1,0 +1,34 @@
+html, body { 
+    height: 100%; 
+}
+
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.list-group-item {
+    padding: .75rem 1rem;
+    .mat-icon {
+        height: 18px;
+        width: 18px;
+        font-size: 18px;
+    }
+}
+
+.pri-low {
+    border-left: 0.45rem solid #28a745;
+}
+
+.pri-medium {
+    border-left: 0.45rem solid #ffc107;
+}
+
+.pri-high {
+    border-left: 0.45rem solid #dc3545;
+}
+
+.filterDrop .mat-form-field-flex {
+    background-color: #fff;
+}
