@@ -22,6 +22,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FilterPipe } from './pipes/filter-pipe';
+import { ConfirmDialogueComponent } from './components/confirm-dialogue/confirm-dialogue.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { FilterPipe } from './pipes/filter-pipe';
     AlbumCardsComponent,
     TodoFormComponent,
     TodoListComponent,
-    FilterPipe
+    FilterPipe,
+    ConfirmDialogueComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,8 @@ import { FilterPipe } from './pipes/filter-pipe';
     MatInputModule,
     FormsModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

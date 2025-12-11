@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Itodo } from 'src/app/models/todos.type';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { TodoServiceService } from 'src/app/services/todo-service.service';
+import { ConfirmDialogueComponent } from '../confirm-dialogue/confirm-dialogue.component';
 
 @Component({
   selector: 'app-todo-list',
@@ -18,7 +20,8 @@ export class TodoListComponent implements OnInit {
 
   constructor(
     private _todoService: TodoServiceService,
-    private _snackbarService: SnackbarService) {}
+    private _snackbarService: SnackbarService,
+    private _confirm: MatDialog) {}
 
   ngOnInit(): void {
     this._todoService.fetchAllTodos().subscribe({
@@ -41,14 +44,24 @@ export class TodoListComponent implements OnInit {
   }
 
   onRemove(obj: Itodo) {
-    let sure = confirm(`Are you sure to delete Todo with id ${obj.id}`);
-    if(sure){
-      this.filterValue=''
-      this._todoService.deleteTodo(obj).subscribe({
-        next: data => { this._snackbarService.showAlert(`Todo with id ${obj.id} deleted successfully!`) },
-        error: err => {}
-      })       
-    }    
+
+    const config = new MatDialogConfig();
+    config.width = '300px';
+    config.maxWidth = '90%';
+    config.disableClose = true;
+    config.data = obj.todo;
+
+    let ref = this._confirm.open(ConfirmDialogueComponent, config);
+
+    ref.afterClosed().subscribe(res => {
+      if(res){
+        this.filterValue=''
+        this._todoService.deleteTodo(obj).subscribe({
+          next: data => { this._snackbarService.showAlert(`Todo with id ${obj.id} deleted successfully!`) },
+          error: err => {}
+        }) 
+      }
+    }) 
   }
 
 }
